@@ -4,6 +4,11 @@ on:
     branches: [main]
 permissions:
   contents: read
+  packages: write
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
 
 jobs:
   test-and-deploy:
@@ -17,17 +22,21 @@ jobs:
         run: pip install -e .
       - name: Run tests
         run: python -m pytest -q
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GHCR_PAT }}
+      - name: Build and push
+        run: |
+          docker build -t ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }} .
+          docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
       - name: Azure login
         uses: azure/login@v2
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
-      - name: Login to ACR
-        run: az acr login --name ${{ secrets.ACR_NAME }}
-      - name: Build and push
-        run: |
-          docker build -t ${{ secrets.ACR_NAME }}.azurecr.io/medinfo:${{ github.sha }} .
-          docker push ${{ secrets.ACR_NAME }}.azurecr.io/medinfo:${{ github.sha }}
       - name: Deploy to Container Apps
         run: |
           az containerapp update -n ${{ secrets.CONTAINERAPP_NAME }} -g ${{ secrets.RESOURCE_GROUP }} \
-            --image ${{ secrets.ACR_NAME }}.azurecr.io/medinfo:${{ github.sha }}
+            --image ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
