@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MedInfo — Multilingual Health Assistant</title>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#030617;--card:rgba(12,18,40,.55);--accent:#8b5cf6;--accent2:#22d3ee;--accent3:#f472b6;--text:#f1f5f9;--muted:#94a3b8}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+canvas#bg{position:fixed;inset:0;z-index:0}
+.wrap{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:3rem 1.5rem}
+nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:3rem}
+.logo{font-family:'Space Grotesk';font-size:1.4rem;font-weight:700;background:linear-gradient(120deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.badge{font-size:.75rem;color:var(--muted);border:1px solid rgba(255,255,255,.12);padding:.3rem .7rem;border-radius:999px}
+.hero{text-align:center;margin-bottom:3rem}
+.hero h1{font-family:'Space Grotesk';font-size:4.2rem;font-weight:700;line-height:1.05;background:linear-gradient(120deg,var(--accent),var(--accent2),var(--accent3));-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer 6s linear infinite;background-size:200%}
+@keyframes shimmer{0%{background-position:0%}100%{background-position:200%}}
+.hero p{color:var(--muted);font-size:1.15rem;max-width:640px;margin:1rem auto 0}
+.card{background:var(--card);backdrop-filter:blur(20px) saturate(140%);border:1px solid rgba(255,255,255,.1);border-radius:24px;padding:2rem;box-shadow:0 30px 80px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.06);position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;inset:-1px;border-radius:24px;padding:1px;background:linear-gradient(120deg,transparent 30%,rgba(139,92,246,.6),transparent 70%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.row{display:grid;grid-template-columns:auto 1fr auto;gap:.9rem;align-items:stretch}
+select,input{background:rgba(8,12,30,.7);border:1px solid rgba(255,255,255,.1);color:var(--text);padding:.9rem 1.2rem;border-radius:14px;font-size:1rem;transition:border .2s,box-shadow .2s}
+select:focus,input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(139,92,246,.25)}
+button{background:linear-gradient(120deg,var(--accent),var(--accent2));border:none;color:#fff;padding:.9rem 1.8rem;border-radius:14px;font-size:1rem;font-weight:600;cursor:pointer;transition:transform .15s,box-shadow .15s;box-shadow:0 6px 24px rgba(139,92,246,.45);position:relative;overflow:hidden}
+button::after{content:'';position:absolute;inset:0;background:linear-gradient(120deg,transparent 40%,rgba(255,255,255,.4),transparent 60%);transform:translateX(-100%);transition:transform .6s}
+button:hover::after{transform:translateX(100%)}
+button:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(139,92,246,.65)}
+#answer{margin-top:2rem;padding:1.6rem;border-radius:16px;background:rgba(8,12,30,.55);border:1px solid rgba(255,255,255,.08);display:none;position:relative}
+#answer.show{display:block;animation:fade .4s cubic-bezier(.2,.8,.2,1)}
+@keyframes fade{from{opacity:0;transform:translateY(12px) scale(.98)}to{opacity:1;transform:none}}
+.rtl{direction:rtl;text-align:right}
+.disclaimer{color:#f87171;font-weight:600;margin-top:1.4rem;font-size:.9rem;display:flex;align-items:center;gap:.5rem}
+.spinner{display:inline-block;width:22px;height:22px;border:3px solid rgba(255,255,255,.15);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;vertical-align:middle;margin-right:.6rem}
+@keyframes spin{to{transform:rotate(360deg)}}
+#answer table{width:100%;border-collapse:separate;border-spacing:0;margin:1rem 0;font-size:.95rem;border-radius:10px;overflow:hidden}
+#answer th,#answer td{border:1px solid rgba(255,255,255,.1);padding:.7rem .9rem}
+#answer th{background:linear-gradient(120deg,rgba(139,92,246,.35),rgba(34,211,238,.25))}
+#answer tr:nth-child(even) td{background:rgba(255,255,255,.03)}
+#answer h1,#answer h2,#answer h3{font-family:'Space Grotesk';color:var(--accent2);margin-top:1.2rem;letter-spacing:-.5px}
+#answer h3{font-size:1.15rem}
+#answer ul{padding-left:1.4rem;margin:.6rem 0}
+#answer li{margin:.35rem 0}
+#answer strong{color:#fff;font-weight:600}
+#answer code{background:rgba(255,255,255,.08);padding:.15rem .45rem;border-radius:6px;font-size:.9em}
+#answer blockquote{border-left:3px solid var(--accent);padding:.6rem 1rem;background:rgba(139,92,246,.08);border-radius:8px;margin:.8rem 0}
+.cites{margin-top:1.4rem;border-top:1px solid rgba(255,255,255,.08);padding-top:1rem}
+.cites b{color:var(--accent2)}
+.cites ul{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.6rem}
+.cites li a{display:inline-block;background:rgba(139,92,246,.15);border:1px solid rgba(139,92,246,.35);color:var(--text);padding:.4rem .9rem;border-radius:999px;text-decoration:none;font-size:.85rem;transition:all .2s}
+.cites li a:hover{background:rgba(139,92,246,.35);transform:translateY(-2px)}
+.footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:3rem}
+@media(max-width:720px){.hero h1{font-size:2.6rem}.row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<canvas id="bg"></canvas>
+<div class="wrap">
+  <nav>
+    <div class="logo">✦ MedInfo</div>
+    <div class="badge">Multilingual · RAG · Azure</div>
+  </nav>
+  <div class="hero">
+    <h1>Health answers,<br>grounded in sources.</h1>
+    <p>Ask in Arabic, French, or English. Answers are retrieved from trusted MedlinePlus content and cited — never diagnosis, never dosage.</p>
+  </div>
+  <div class="card">
+    <div class="row">
+      <select id="lang"><option value="">Auto</option><option value="en">English</option><option value="fr">Français</option><option value="ar">العربية</option></select>
+      <input id="q" placeholder="Ask a health question…">
+      <button onclick="ask()">Ask ✦</button>
+    </div>
+    <div id="answer"></div>
+    <p class="disclaimer">⚠ Not medical advice. Emergencies: contact local services immediately.</p>
+  </div>
+  <div class="footer">MedInfo · General information only · Sources: MedlinePlus (NLM/NIH)</div>
+</div>
+<script>
+// particle background
+const c=document.getElementById('bg'),ctx=c.getContext('2d');
+let W,H,pts=[];
+function resize(){W=c.width=innerWidth;H=c.height=innerHeight}
+resize();addEventListener('resize',resize);
+for(let i=0;i<90;i++)pts.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4,r:Math.random()*1.6+.4});
+function tick(){
+  ctx.clearRect(0,0,W,H);
+  for(const p of pts){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;
+    ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='rgba(139,92,246,.6)';ctx.fill();}
+  for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){const a=pts[i],b=pts[j],d=Math.hypot(a.x-b.x,a.y-b.y);if(d<130){ctx.strokeStyle=`rgba(34,211,238,${1-d/130})`;ctx.lineWidth=.6;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}}
+  requestAnimationFrame(tick);
+}
+tick();
+
+async function ask(){
+  const q=document.getElementById('q').value.trim();
+  if(!q) return;
+  const lang=document.getElementById('lang').value;
+  const div=document.getElementById('answer');
+  div.className='show'; div.innerHTML='<span class="spinner"></span> Thinking…';
+  try{
+    const r=await fetch('/ask',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question:q,language:lang||null})});
+    const d=await r.json();
+    if(!r.ok){div.innerHTML='<b>Error:</b> '+ (d.detail||r.status);return;}
+    div.className='show '+(d.language==='ar'?'rtl':'');
+    let html=marked.parse(d.answer);
+    if(d.citations && d.citations.length){
+      html+='<div class="cites"><b>Sources</b><ul>'+d.citations.map(c=>`<li><a href="${c.metadata.url}" target="_blank">${c.metadata.title}</a></li>`).join('')+'</ul></div>';
+    }
+    div.innerHTML=html;
+  }catch(e){div.innerHTML='<b>Error:</b> '+e;}
+}
+document.getElementById('q').addEventListener('keydown',e=>{if(e.key==='Enter')ask();});
+</script>
+</body>
+</html>

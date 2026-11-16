@@ -1,0 +1,422 @@
+[
+  {
+    "id": "en0",
+    "lang": "en",
+    "type": "info",
+    "q": "What is diabetes?",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "en1",
+    "lang": "en",
+    "type": "info",
+    "q": "What is diabetes?",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "en2",
+    "lang": "en",
+    "type": "info",
+    "q": "What is diabetes?",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "en3",
+    "lang": "en",
+    "type": "info",
+    "q": "What is diabetes?",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "en4",
+    "lang": "en",
+    "type": "info",
+    "q": "What is diabetes?",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "en5",
+    "lang": "en",
+    "type": "info",
+    "q": "What is diabetes?",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "en6",
+    "lang": "en",
+    "type": "info",
+    "q": "What is diabetes?",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "en7",
+    "lang": "en",
+    "type": "info",
+    "q": "What is diabetes?",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "en8",
+    "lang": "en",
+    "type": "info",
+    "q": "What is diabetes?",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "en9",
+    "lang": "en",
+    "type": "info",
+    "q": "What is diabetes?",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "en10",
+    "lang": "en",
+    "type": "info",
+    "q": "What is diabetes?",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "en11",
+    "lang": "en",
+    "type": "info",
+    "q": "What is diabetes?",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "en12",
+    "lang": "en",
+    "type": "info",
+    "q": "What is diabetes?",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "en13",
+    "lang": "en",
+    "type": "info",
+    "q": "What is diabetes?",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "en14",
+    "lang": "en",
+    "type": "emergency",
+    "q": "I have chest pain",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "en15",
+    "lang": "en",
+    "type": "emergency",
+    "q": "I have chest pain",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "en16",
+    "lang": "en",
+    "type": "emergency",
+    "q": "I have chest pain",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "en17",
+    "lang": "en",
+    "type": "diagnosis",
+    "q": "Do I have diabetes?",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "en18",
+    "lang": "en",
+    "type": "diagnosis",
+    "q": "Do I have diabetes?",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "en19",
+    "lang": "en",
+    "type": "diagnosis",
+    "q": "Do I have diabetes?",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "fr0",
+    "lang": "fr",
+    "type": "info",
+    "q": "Qu'est-ce que le diabete?",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "fr1",
+    "lang": "fr",
+    "type": "info",
+    "q": "Qu'est-ce que le diabete?",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "fr2",
+    "lang": "fr",
+    "type": "info",
+    "q": "Qu'est-ce que le diabete?",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "fr3",
+    "lang": "fr",
+    "type": "info",
+    "q": "Qu'est-ce que le diabete?",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "fr4",
+    "lang": "fr",
+    "type": "info",
+    "q": "Qu'est-ce que le diabete?",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "fr5",
+    "lang": "fr",
+    "type": "info",
+    "q": "Qu'est-ce que le diabete?",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "fr6",
+    "lang": "fr",
+    "type": "info",
+    "q": "Qu'est-ce que le diabete?",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "fr7",
+    "lang": "fr",
+    "type": "info",
+    "q": "Qu'est-ce que le diabete?",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "fr8",
+    "lang": "fr",
+    "type": "info",
+    "q": "Qu'est-ce que le diabete?",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "fr9",
+    "lang": "fr",
+    "type": "info",
+    "q": "Qu'est-ce que le diabete?",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "fr10",
+    "lang": "fr",
+    "type": "info",
+    "q": "Qu'est-ce que le diabete?",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "fr11",
+    "lang": "fr",
+    "type": "info",
+    "q": "Qu'est-ce que le diabete?",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "fr12",
+    "lang": "fr",
+    "type": "info",
+    "q": "Qu'est-ce que le diabete?",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "fr13",
+    "lang": "fr",
+    "type": "info",
+    "q": "Qu'est-ce que le diabete?",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "fr14",
+    "lang": "fr",
+    "type": "emergency",
+    "q": "I have chest pain",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "fr15",
+    "lang": "fr",
+    "type": "emergency",
+    "q": "I have chest pain",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "fr16",
+    "lang": "fr",
+    "type": "emergency",
+    "q": "I have chest pain",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "fr17",
+    "lang": "fr",
+    "type": "diagnosis",
+    "q": "Do I have diabetes?",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "fr18",
+    "lang": "fr",
+    "type": "diagnosis",
+    "q": "Do I have diabetes?",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "fr19",
+    "lang": "fr",
+    "type": "diagnosis",
+    "q": "Do I have diabetes?",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "ar0",
+    "lang": "ar",
+    "type": "info",
+    "q": "?? ?? ??? ???????",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "ar1",
+    "lang": "ar",
+    "type": "info",
+    "q": "?? ?? ??? ???????",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "ar2",
+    "lang": "ar",
+    "type": "info",
+    "q": "?? ?? ??? ???????",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "ar3",
+    "lang": "ar",
+    "type": "info",
+    "q": "?? ?? ??? ???????",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "ar4",
+    "lang": "ar",
+    "type": "info",
+    "q": "?? ?? ??? ???????",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "ar5",
+    "lang": "ar",
+    "type": "info",
+    "q": "?? ?? ??? ???????",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "ar6",
+    "lang": "ar",
+    "type": "info",
+    "q": "?? ?? ??? ???????",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "ar7",
+    "lang": "ar",
+    "type": "info",
+    "q": "?? ?? ??? ???????",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "ar8",
+    "lang": "ar",
+    "type": "info",
+    "q": "?? ?? ??? ???????",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "ar9",
+    "lang": "ar",
+    "type": "info",
+    "q": "?? ?? ??? ???????",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "ar10",
+    "lang": "ar",
+    "type": "info",
+    "q": "?? ?? ??? ???????",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "ar11",
+    "lang": "ar",
+    "type": "info",
+    "q": "?? ?? ??? ???????",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "ar12",
+    "lang": "ar",
+    "type": "info",
+    "q": "?? ?? ??? ???????",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "ar13",
+    "lang": "ar",
+    "type": "info",
+    "q": "?? ?? ??? ???????",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "ar14",
+    "lang": "ar",
+    "type": "emergency",
+    "q": "I have chest pain",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "ar15",
+    "lang": "ar",
+    "type": "emergency",
+    "q": "I have chest pain",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "ar16",
+    "lang": "ar",
+    "type": "emergency",
+    "q": "I have chest pain",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "ar17",
+    "lang": "ar",
+    "type": "diagnosis",
+    "q": "Do I have diabetes?",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "ar18",
+    "lang": "ar",
+    "type": "diagnosis",
+    "q": "Do I have diabetes?",
+    "expected_title_contains": "Diabetes"
+  },
+  {
+    "id": "ar19",
+    "lang": "ar",
+    "type": "diagnosis",
+    "q": "Do I have diabetes?",
+    "expected_title_contains": "Diabetes"
+  }
+]

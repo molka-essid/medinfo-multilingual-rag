@@ -1,0 +1,33 @@
+name: CI/CD to Azure Container Apps
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+
+jobs:
+  test-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install deps
+        run: pip install -e .
+      - name: Run tests
+        run: python -m pytest -q
+      - name: Azure login
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      - name: Login to ACR
+        run: az acr login --name ${{ secrets.ACR_NAME }}
+      - name: Build and push
+        run: |
+          docker build -t ${{ secrets.ACR_NAME }}.azurecr.io/medinfo:${{ github.sha }} .
+          docker push ${{ secrets.ACR_NAME }}.azurecr.io/medinfo:${{ github.sha }}
+      - name: Deploy to Container Apps
+        run: |
+          az containerapp update -n ${{ secrets.CONTAINERAPP_NAME }} -g ${{ secrets.RESOURCE_GROUP }} \
+            --image ${{ secrets.ACR_NAME }}.azurecr.io/medinfo:${{ github.sha }}
